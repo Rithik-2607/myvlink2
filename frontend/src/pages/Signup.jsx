@@ -98,12 +98,24 @@ const Signup = () => {
         </div>
         {/* OAuth Buttons Side-by-Side */}
         <div className="flex flex-row justify-between gap-4 mt-4">
-          <button className="flex items-center justify-center w-1/2 py-2 border border-gray-700 rounded text-sm text-white hover:bg-gray-700 transition">
-            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5 mr-2" />
+          <button className="flex items-center justify-center w-1/2 py-2 bg-blue-600 text-white font-semibold border border-blue-600 rounded text-sm hover:bg-blue-700 transition">
+            {/* Google SVG logo in all white */}
+            <svg className="w-5 h-5 mr-2" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <path fill="#fff" d="M43.6 20.5H42V20.5H24V27.5H35.1C33.7 31.1 30.2 33.5 26 33.5C20.2 33.5 15.5 28.8 15.5 23C15.5 17.2 20.2 12.5 26 12.5C28.6 12.5 31 13.5 32.8 15.2L37.2 10.8C34.2 8.1 30.3 6.5 26 6.5C16.8 6.5 9 14.3 9 23.5C9 32.7 16.8 40.5 26 40.5C34.2 40.5 41 33.7 41 25.5C41 24.5 40.9 23.5 40.7 22.5H26V20.5H43.6Z"/>
+                <path fill="#fff" d="M9 23.5C9 14.3 16.8 6.5 26 6.5C30.3 6.5 34.2 8.1 37.2 10.8L32.8 15.2C31 13.5 28.6 12.5 26 12.5C20.2 12.5 15.5 17.2 15.5 23C15.5 28.8 20.2 33.5 26 33.5C30.2 33.5 33.7 31.1 35.1 27.5H26V20.5H43.6C43.8 21.5 44 22.5 44 23.5C44 33.7 34.2 40.5 26 40.5C16.8 40.5 9 32.7 9 23.5Z"/>
+              </g>
+            </svg>
             Google
           </button>
-          <button className="flex items-center justify-center w-1/2 py-2 border border-gray-700 rounded text-sm text-white hover:bg-gray-700 transition">
-            <img src="https://www.svgrepo.com/show/448234/linkedin.svg" alt="LinkedIn" className="w-5 h-5 mr-2" />
+          <button className="flex items-center justify-center w-1/2 py-2 bg-blue-600 text-white font-semibold border border-blue-600 rounded text-sm hover:bg-blue-700 transition">
+            {/* LinkedIn SVG logo in white */}
+            <svg className="w-5 h-5 mr-2" viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <rect width="32" height="32" rx="6" fill="white" fillOpacity="0.0"/>
+                <path d="M27 27H22.8V21.1C22.8 19.7 22.8 17.9 20.9 17.9C19 17.9 18.7 19.3 18.7 21V27H14.5V13H18.5V14.7H18.6C19.1 13.8 20.2 13 21.7 13C25.1 13 27 15.1 27 18.3V27ZM10.2 11.3C8.9 11.3 8 10.4 8 9.3C8 8.2 8.9 7.3 10.2 7.3C11.5 7.3 12.4 8.2 12.4 9.3C12.4 10.4 11.5 11.3 10.2 11.3ZM12.1 27H8.3V13H12.1V27Z" fill="white"/>
+              </g>
+            </svg>
             LinkedIn
           </button>
         </div>

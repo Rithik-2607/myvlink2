@@ -2,120 +2,114 @@ import React, { useState } from 'react';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
+    name: '',
     email: '',
     password: '',
+    confirmPassword: '',
     phone: '',
-    agree: false,
   });
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.agree) {
-      alert('Please agree to the terms.');
+    setError('');
+    if (formData.password !== formData.confirmPassword) {
+      setError('Passwords do not match.');
       return;
     }
-    console.log('Submitted:', formData);
-    // Send data to backend here
+    // Add further validation or API call here
+    console.log('Signup Data:', formData);
   };
 
   return (
-    <div className="min-h-screen flex justify-end items-center bg-gray-100 px-4">
-      <div className="w-full max-w-xl bg-white p-8 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Sign Up for CRM</h2>
+    <div className="min-h-screen flex items-center bg-gray-900 px-4">
+      <div className="ml-auto w-full max-w-md bg-gray-800 p-6 md:p-8 rounded-lg shadow-md" style={{ marginRight: 0 }}>
+        <h2 className="text-2xl font-bold mb-6 text-center text-white">Sign up for your account</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
-            name="fullName"
+            name="name"
             placeholder="Full Name"
-            value={formData.fullName}
+            value={formData.name}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border border-gray-700 rounded bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
           <input
             type="email"
             name="email"
-            placeholder="Work Email"
+            placeholder="Email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border border-gray-700 rounded bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
           <input
             type="password"
             name="password"
-            placeholder="Create Password"
+            placeholder="Password"
             value={formData.password}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border border-gray-700 rounded bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border border-gray-700 rounded bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
           <div className="flex">
-            <span className="flex items-center px-3 rounded-l border border-r-0 bg-gray-200 text-gray-600 text-sm">+91</span>
+            <span className="flex items-center px-3 rounded-l border border-r-0 bg-gray-700 text-gray-300 text-sm">+91</span>
             <input
               type="tel"
               name="phone"
               placeholder="Phone Number"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-4 py-2 border border-gray-300 rounded-r focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-700 rounded-r bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
-          <div className="text-sm text-gray-700">
-            It looks like you’re in <strong>INDIA</strong> based on your IP.
-          </div>
-          <label className="flex items-start text-sm text-gray-700">
-            <input
-              type="checkbox"
-              name="agree"
-              checked={formData.agree}
-              onChange={handleChange}
-              className="mt-1 mr-2"
-            />
-            I agree to the{' '}
-            <a href="#" className="text-blue-600 underline ml-1">
-              Terms of Service
-            </a>{' '}
-            and{' '}
-            <a href="#" className="text-blue-600 underline ml-1">
-              Privacy Policy
-            </a>.
-          </label>
+          {error && <div className="text-red-500 text-sm">{error}</div>}
           <button
             type="submit"
-            className="w-full bg-red-600 text-white py-2 rounded font-semibold hover:bg-red-700 transition"
+            className="w-full bg-blue-600 text-white py-2 rounded font-semibold hover:bg-blue-700 transition"
           >
-            GET STARTED
+            Sign Up
           </button>
         </form>
-
         {/* Divider with text */}
         <div className="flex items-center my-6">
-          <hr className="flex-grow border-t border-gray-300" />
-          <span className="mx-4 text-gray-500 text-sm">Or, Create a new account now</span>
-          <hr className="flex-grow border-t border-gray-300" />
+          <hr className="flex-grow border-t border-gray-700" />
+          <span className="mx-4 text-gray-400 text-sm">or sign up with</span>
+          <hr className="flex-grow border-t border-gray-700" />
         </div>
-
         {/* OAuth Buttons Side-by-Side */}
         <div className="flex flex-row justify-between gap-4 mt-4">
-          <button className="flex items-center justify-center w-1/2 py-2 border border-gray-300 rounded text-sm hover:bg-gray-100 transition">
+          <button className="flex items-center justify-center w-1/2 py-2 border border-gray-700 rounded text-sm text-white hover:bg-gray-700 transition">
             <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5 mr-2" />
-            Sign in with Google
+            Google
           </button>
-          <button className="flex items-center justify-center w-1/2 py-2 border border-gray-300 rounded text-sm hover:bg-gray-100 transition">
+          <button className="flex items-center justify-center w-1/2 py-2 border border-gray-700 rounded text-sm text-white hover:bg-gray-700 transition">
             <img src="https://www.svgrepo.com/show/448234/linkedin.svg" alt="LinkedIn" className="w-5 h-5 mr-2" />
-            Sign in with LinkedIn
+            LinkedIn
           </button>
+        </div>
+        <div className="text-center text-gray-400 text-sm mt-6">
+          Already have an account?{' '}
+          <a href="#" className="text-blue-400 underline ml-1">Sign In</a>
         </div>
       </div>
     </div>
